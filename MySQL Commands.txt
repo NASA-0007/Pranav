@@ -1,0 +1,108 @@
+ SELECT NAME,SALARY,AGE FROM employee_details WHERE NAME LIKE "_A%";
++-------+--------+------+
+| NAME  | SALARY | AGE  |
++-------+--------+------+
+| MANAV |  90000 |   24 |
++-------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(SALARY),AVG(SALARY) FROM  employee_details;
++-------------+-------------+
+| SUM(SALARY) | AVG(SALARY) |
++-------------+-------------+
+|      461000 |  65857.1429 |
++-------------+-------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT MIN(SALARY),MAX(SALARY) FROM  employee_details WHERE DEPT_NO=20;
++-------------+-------------+
+| MIN(SALARY) | MAX(SALARY) |
++-------------+-------------+
+|       54000 |       90000 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM employee_details WHERE DEPT_NO=20;
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM  employee_details ORDER BY SALARY;
++--------+--------+--------+------+------+-------+---------+
+| EMP_NO | NAME   | SALARY | DEPT | AGE  | GRADE | DEPT_NO |
++--------+--------+--------+------+------+-------+---------+
+|      4 | HENRY  |  38000 | ME   |   35 | C     |      40 |
+|      1 | JOPHY  |  40000 | HR   |   23 | A     |    NULL |
+|      5 | STEEV  |  54000 | HR   |   28 | A     |      20 |
+|      6 | SOMAN  |  69000 | ME   |   70 | B     |      40 |
+|      2 | HRIDYA |  80000 | HR   |   23 | A     |      20 |
+|      3 | JOHN   |  90000 | HR   |   28 | D     |      20 |
+|      7 | MANAV  |  90000 | HR   |   24 | A     |      20 |
++--------+--------+--------+------+------+-------+---------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT DEPT_NO,COUNT(*) FROM  employee_details GROUP BY DEPT_NO;
++---------+----------+
+| DEPT_NO | COUNT(*) |
++---------+----------+
+|    NULL |        1 |
+|      20 |        4 |
+|      40 |        2 |
++---------+----------+
+3 rows in set (0.00 sec)
+
+mysql>  DELETE FROM employee_details WHERE NAME="JOPHY";
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM employee_details;
++--------+--------+--------+------+------+-------+---------+
+| EMP_NO | NAME   | SALARY | DEPT | AGE  | GRADE | DEPT_NO |
++--------+--------+--------+------+------+-------+---------+
+|      2 | HRIDYA |  80000 | HR   |   23 | A     |      20 |
+|      3 | JOHN   |  90000 | HR   |   28 | D     |      20 |
+|      4 | HENRY  |  38000 | ME   |   35 | C     |      40 |
+|      5 | STEEV  |  54000 | HR   |   28 | A     |      20 |
+|      6 | SOMAN  |  69000 | ME   |   70 | B     |      40 |
+|      7 | MANAV  |  90000 | HR   |   24 | A     |      20 |
++--------+--------+--------+------+------+-------+---------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE employee_details ADD BONUS DECIMAL(4,2);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  SELECT * FROM employee_details;
++--------+--------+--------+------+------+-------+---------+-------+
+| EMP_NO | NAME   | SALARY | DEPT | AGE  | GRADE | DEPT_NO | BONUS |
++--------+--------+--------+------+------+-------+---------+-------+
+|      2 | HRIDYA |  80000 | HR   |   23 | A     |      20 |  NULL |
+|      3 | JOHN   |  90000 | HR   |   28 | D     |      20 |  NULL |
+|      4 | HENRY  |  38000 | ME   |   35 | C     |      40 |  NULL |
+|      5 | STEEV  |  54000 | HR   |   28 | A     |      20 |  NULL |
+|      6 | SOMAN  |  69000 | ME   |   70 | B     |      40 |  NULL |
+|      7 | MANAV  |  90000 | HR   |   24 | A     |      20 |  NULL |
++--------+--------+--------+------+------+-------+---------+-------+
+6 rows in set (0.00 sec)
+
+
+mysql> UPDATE  employee_details SET SALARY=SALARY+2000;
+Query OK, 6 rows affected (0.01 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql>  SELECT * FROM employee_details;
++--------+--------+--------+------+------+-------+---------+-------+
+| EMP_NO | NAME   | SALARY | DEPT | AGE  | GRADE | DEPT_NO | BONUS |
++--------+--------+--------+------+------+-------+---------+-------+
+|      2 | HRIDYA |  82000 | HR   |   23 | A     |      20 |  NULL |
+|      3 | JOHN   |  92000 | HR   |   28 | D     |      20 |  NULL |
+|      4 | HENRY  |  40000 | ME   |   35 | C     |      40 |  NULL |
+|      5 | STEEV  |  56000 | HR   |   28 | A     |      20 |  NULL |
+|      6 | SOMAN  |  71000 | ME   |   70 | B     |      40 |  NULL |
+|      7 | MANAV  |  92000 | HR   |   24 | A     |      20 |  NULL |
++--------+--------+--------+------+------+-------+---------+-------+
+6 rows in set (0.00 sec)
+
+  
